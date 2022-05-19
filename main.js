@@ -152,7 +152,7 @@ class Field {
         let keepPlaying = true;
 
         do {
-            let move = prompt('---------------\nYour move\n< | > | ^ | v ||  ');
+            let move = prompt('===Your move | < | > | ^ | v ||  ');
             keepPlaying = this.move(move);
 
             // if (keepPlaying) this.play();

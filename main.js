@@ -14,7 +14,7 @@ class Field {
         let gridStr = this.grid.map(
             arr => arr.join('')
         ).join('\n');
-        
+
         console.log(gridStr);
     }
 }
@@ -25,4 +25,7 @@ let smallGame = new Field([
     [field, hat, field]
 ])
 
+
+const name = prompt('Player name? ');
+console.log(`${name.toUpperCase()}'S BOARD`);
 smallGame.print();

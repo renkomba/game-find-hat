@@ -7,15 +7,37 @@ const path = '*';
 
 class Field {
     constructor(arr2d) {
-        this.grid = arr2d;
+        this._grid = arr2d;
+        this._position = [0,0];
+        this._rows = arr2d.length;
+        this._columns = arr2d[0].length;
+    }
+
+    set grid(newGrid) {
+        this._grid = newGrid;
+        this._rows = newGrid.length;
+        this._columns = newGrid[0].length;
+    }
+
+    get grid() {
+        return this.print();
+    }
+
+    set position(newCoordinates) {
+        this._position = newCoordinates;
+    }
+
+    get position() {
+        return this._position;
     }
 
     print() {
-        let gridStr = this.grid.map(
+        let gridStr = this._grid.map(
             arr => arr.join('')
         ).join('\n');
 
         console.log(gridStr);
+        return this._grid;
     }
 
     static getRandomNum(exceptionArr, max) {
@@ -80,6 +102,36 @@ class Field {
 
         return newGrid;
     }
+
+    move (direction) {
+        if (direction === '<') this._position[1]--;
+        if (direction === '>') this._position[1]++;
+        if (direction === '^') this._position[0]--;
+        if (direction === 'v') this._position[0]++;
+
+        let [row, col] = this._position;
+        if (row < 0 || col < 0) {
+            console.log('=== GAME OVER ===\nYou fell off the board!')
+            this.print();
+            return 'game over';
+        }
+        if (this._grid[row][col] === hole) {
+            console.log('=== GAME OVER ===\nYou fell into a hole!')
+            this._grid[row][col] = 'X';
+            this.print();
+            return 'game over';
+        }
+        if (this._grid[row][col] === hat) {
+            console.log('=== VICTORY ===\nYou found your hat!')
+            this._grid[row][col] = 'W';
+            this.print();
+            return 'victory';
+        }
+
+        this._grid[row][col] = path;
+        this.print();
+        return 'continue';
+    }
 }
 
 let smallGame = new Field([
@@ -104,3 +156,8 @@ do {
         smallGame.print();
     }
 } while (changeBoard === 'y');
+
+let [ direction, gameProgress ] = [ '', 'continue' ];
+do {
+    gameProgress = smallGame.move(prompt('---------------\nYour move\n< | > | ^ | v ||  '));
+} while (gameProgress === 'continue');

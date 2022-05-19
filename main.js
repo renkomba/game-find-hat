@@ -113,51 +113,61 @@ class Field {
         if (row < 0 || col < 0) {
             console.log('=== GAME OVER ===\nYou fell off the board!')
             this.print();
-            return 'game over';
+            return false;
         }
         if (this._grid[row][col] === hole) {
             console.log('=== GAME OVER ===\nYou fell into a hole!')
             this._grid[row][col] = 'X';
             this.print();
-            return 'game over';
+            return false;
         }
         if (this._grid[row][col] === hat) {
             console.log('=== VICTORY ===\nYou found your hat!')
             this._grid[row][col] = 'W';
             this.print();
-            return 'victory';
+            return false;
         }
 
         this._grid[row][col] = path;
         this.print();
-        return 'continue';
+        return true;
+    }
+
+    changeGrid() {
+        let change = false;
+
+        do {
+            change = prompt('Change board (y/n) ? ');
+            change = change.toLowerCase()[0] === 'n' ? false : true;
+        
+            if (change) {
+                this._grid = Field.generateField( Math.floor( Math.random() * 10 ) );
+            }
+
+            this.print();
+        } while (change);
+    }
+
+    play() {
+        let keepPlaying = true;
+
+        do {
+            let move = prompt('---------------\nYour move\n< | > | ^ | v ||  ');
+            keepPlaying = this.move(move);
+
+            // if (keepPlaying) this.play();
+        } while (keepPlaying);
     }
 }
 
-let smallGame = new Field([
-    [path, field, hole],
-    [field, hole, field],
-    [field, hat, field]
-])
+const start = () => {
+    let name = prompt('Player name? ');
+    console.log(`${name.toUpperCase()}'S BOARD`);
+    return new Field( Field.generateField( Math.floor( Math.random() * 10 ) ) );
+}
 
-
-const name = prompt('Player name? ');
-console.log(`${name.toUpperCase()}'S BOARD`);
-smallGame.print();
-
-let changeBoard = '';
-do {
-    changeBoard = prompt('Change board (y/n) ? ');
-
-    if (changeBoard === 'y') {
-        smallGame.grid = Field.generateField( Math.floor( Math.random() * 10 ) );
-        smallGame.print();
-    } else {
-        smallGame.print();
-    }
-} while (changeBoard === 'y');
-
-let [ direction, gameProgress ] = [ '', 'continue' ];
-do {
-    gameProgress = smallGame.move(prompt('---------------\nYour move\n< | > | ^ | v ||  '));
-} while (gameProgress === 'continue');
+// RUN GAME
+let game = start();
+game.print();
+game.changeGrid();
+game.play();

@@ -9,15 +9,62 @@ const colours = {
     end: '\x1b[0m'
 };
 
+const accentsAndLetters = {
+    e: {
+        accent: ['/', '\\', '^', ':'],
+        letter: ['é', 'è', 'ê', 'ë']
+    },
+    a: {
+        accent: ['\\', '^', ':'],
+        letter: ['à', 'â', 'ä'],
+    },
+    o: {
+        accent: [':', '^'],
+        letter: ['ö', 'ô'],
+    },
+    i: {
+        accent: [':'],
+        letter: ['ï'],
+    },
+    u: {
+        accent: [':'],
+        letter: ['ü'],
+    },
+    c: {
+        accent: ['s'],
+        letter: ['ç'],
+    }
+    // n: ['ñ']
+    // n: ['~']
+};
+
+const getLetter = () => {
+    let keys = Object.keys(accentsAndLetters);
+    let i = Math.floor( Math.random() * keys.length );
+    
+    return keys[i];
+}
+
+const getI = arr => {
+    return Math.floor( Math.random() * arr.length );
+}
+
+const letter = getLetter();
+const i = getI(accentsAndLetters[letter].letter);
+const [ accent, accentedLetter ] = [
+    accentsAndLetters[letter].accent[i],
+    accentsAndLetters[letter].letter[i]
+];
+
 const hole = colours.black + 'O' + colours.end;
-const hat = colours.pink + '^' + colours.end;
-const winner = colours.pink + 'W' + colours.end;
+const hat = colours.pink + accent + colours.end;
+const winner = colours.pink + accentedLetter + colours.end;
 const loser = colours.red + 'X' + colours.end;
 const field = '░';
 
-const path = colours.yellow +  '*' + colours.end;
-const winningPath = colours.pink +  '*' + colours.end;
-const losingPath = colours.red +  '*' + colours.end;
+const path = colours.yellow + letter + colours.end;
+const winningPath = colours.pink + letter + colours.end;
+const losingPath = colours.red + letter + colours.end;
 
 
 class Field {

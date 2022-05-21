@@ -37,11 +37,11 @@ Move through the grey paths to get to your "hat".
     * If they type 'n', the game will begin with the generated board
     * Else, a new board will be generated and they will be asked if they want a new one
 
-3. Type the appropriate caret to move in any direction
-    * ">" to go left
-    * "v" to go down
-    * "<" to go right
-    * "^" to go up
+3. Use the appropriate key to move in any direction
+    * "W" to go up
+    * "A" to go left
+    * "S" to go down
+    * "D" to go right
 
 4. Reach the "^" to win
 

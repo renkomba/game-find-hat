@@ -11,16 +11,16 @@ const colours = {
 
 const accentsAndLetters = {
     e: {
-        accent: ['/', '\\', '^', ':'],
-        letter: ['é', 'è', 'ê', 'ë']
+        accent: ['/', '\\', '^', ':', 'a', 'o'],
+        letter: ['é', 'è', 'ê', 'ë', 'æ', 'œ']
     },
     a: {
-        accent: ['\\', '^', ':'],
-        letter: ['à', 'â', 'ä'],
+        accent: ['\\', '^', ':', 'e'],
+        letter: ['à', 'â', 'ä', 'æ'],
     },
     o: {
-        accent: [':', '^'],
-        letter: ['ö', 'ô'],
+        accent: [':', '^', 'e'],
+        letter: ['ö', 'ô', 'œ'],
     },
     i: {
         accent: [':'],

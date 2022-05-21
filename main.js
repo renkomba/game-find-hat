@@ -1,9 +1,18 @@
 const prompt = require('prompt-sync')({sigint: true});
 
-const hat = '^';
-const hole = 'O';
+// ANSI escape colour codes for terminal
+const colours = {
+    yellow: '\x1b[93m',
+    green: '\x1b[92m',
+    red: '\x1b[91m',
+    end: '\x1b[0m'
+};
+
+const hat = colours.green + '^' + colours.end;
+const hole = colours.red + 'O' + colours.end;
 const field = '░';
-const path = '*';
+const path = colours.yellow +  '*' + colours.end;
+const winner = colours.green + 'W' + colours.end;
 
 class Field {
     constructor(arr2d) {
@@ -129,7 +138,7 @@ class Field {
         }
         if (this._grid[row][col] === hat) {
             console.log('=== VICTORY ===\nYou found your hat!')
-            this._grid[row][col] = 'W';
+            this._grid[row][col] = winner;
             this.print();
             return false;
         }
@@ -168,7 +177,8 @@ class Field {
 
 const start = () => {
     let name = prompt('Player name? ');
-    console.log(`${name.toUpperCase()}'S BOARD`);
+
+    console.log(colours.yellow + `${name.toUpperCase()}'S BOARD` + colours.end);
     return new Field( Field.generateField( Math.floor( Math.random() * 10 ) ) );
 }
 

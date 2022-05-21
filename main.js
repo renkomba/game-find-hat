@@ -11,6 +11,12 @@ class Field {
         this._position = [0,0];
         this._rows = arr2d.length;
         this._columns = arr2d[0].length;
+        this._directions = {
+            w: 'up',
+            d: 'right',
+            s: 'down',
+            a: 'left'
+        };
     }
 
     set grid(newGrid) {
@@ -104,10 +110,10 @@ class Field {
     }
 
     move (direction) {
-        if (direction === '<') this._position[1]--;
-        if (direction === '>') this._position[1]++;
-        if (direction === '^') this._position[0]--;
-        if (direction === 'v') this._position[0]++;
+        if (direction === 'left') this._position[1]--;
+        if (direction === 'right') this._position[1]++;
+        if (direction === 'up') this._position[0]--;
+        if (direction === 'down') this._position[0]++;
 
         let [row, col] = this._position;
         if (row < 0 || col < 0) {
@@ -152,8 +158,8 @@ class Field {
         let keepPlaying = true;
 
         do {
-            let move = prompt('=== Your move | < | > | ^ | v ||  ');
-            keepPlaying = this.move(move);
+            let move = prompt('=== Your move | A (left) | W (up) | S (down) | D (right) ||  ');
+            keepPlaying = this.move(this._directions[move]);
 
             // if (keepPlaying) this.play();
         } while (keepPlaying);

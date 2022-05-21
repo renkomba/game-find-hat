@@ -1,0 +1,53 @@
+# Find Your Hat
+*simple terminal game*
+
+* [Description](#description)
+* [Features](#features)
+* [Feature To Add](#features-to-add)
+* [How To Use](#how-to-use)
+* [Technologies](#technologies)
+
+---
+
+## Description
+> Use the safe paths to get to your hat, -OR-
+> go rogue and fall to your death.
+> No presh.
+
+Move through the grey paths to get to your "hat".
+
+## Features
+
+## Features To Add
+1. Movement keys. Change to more adjacent keys like "wasd".
+2. French theme. Concept: PLAYER is letter "e" looking for its accent (*aigu, grave, circonflexe, tréma*).
+3. Secret level. PLAYER is a "c" looking for its *cédille*.
+4. Function. Ensure that generated boards are winable.
+5. Lives. Add lives for when PLAYER accidentally falls off board.
+
+## How To Use
+1. Run the game using
+    ``` nodejs
+    node main.js
+    ```
+
+2. PLAYER will be prompted for their name, given a random board (3x3 minimum) to play, and asked if they want a new one. 
+    * If they type 'n', the game will begin with the generated board
+    * Else, a new board will be generated and they will be asked if they want a new one
+
+3. Type the appropriate caret to move in any direction
+    * ">" to go left
+    * "v" to go down
+    * "<" to go right
+    * "^" to go up
+
+4. Reach the "^" to win
+
+5. Lose if you fall off the board or run into a hole "0"
+
+## Technologies
+JavaScript
+
+<!-- ## Collaborators -->
+
+<!-- ## License -->

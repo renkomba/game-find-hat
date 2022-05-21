@@ -18,6 +18,7 @@ Move through the grey paths to get to your "hat".
 
 ## Features
 1. Classic W-A-S-D movement keys
+2. Coloured path, holes, and hat
 
 ## Features To Add
 ### May-June 2022

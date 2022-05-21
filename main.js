@@ -2,17 +2,23 @@ const prompt = require('prompt-sync')({sigint: true});
 
 // ANSI escape colour codes for terminal
 const colours = {
-    yellow: '\x1b[93m',
-    green: '\x1b[92m',
     red: '\x1b[91m',
+    yellow: '\x1b[93m',
+    pink: '\x1b[95m',
+    black: '\x1b[30m',
     end: '\x1b[0m'
 };
 
-const hat = colours.green + '^' + colours.end;
-const hole = colours.red + 'O' + colours.end;
+const hole = colours.black + 'O' + colours.end;
+const hat = colours.pink + '^' + colours.end;
+const winner = colours.pink + 'W' + colours.end;
+const loser = colours.red + 'X' + colours.end;
 const field = '░';
+
 const path = colours.yellow +  '*' + colours.end;
-const winner = colours.green + 'W' + colours.end;
+const winningPath = colours.pink +  '*' + colours.end;
+const losingPath = colours.red +  '*' + colours.end;
+
 
 class Field {
     constructor(arr2d) {
@@ -20,6 +26,7 @@ class Field {
         this._position = [0,0];
         this._rows = arr2d.length;
         this._columns = arr2d[0].length;
+        this._path = [[0,0]];
         this._directions = {
             w: 'up',
             d: 'right',
@@ -127,25 +134,37 @@ class Field {
         let [row, col] = this._position;
         if (row < 0 || col < 0) {
             console.log('=== GAME OVER ===\nYou fell off the board!')
+            this.wonGame(false)
             this.print();
             return false;
         }
         if (this._grid[row][col] === hole) {
             console.log('=== GAME OVER ===\nYou fell into a hole!')
-            this._grid[row][col] = 'X';
+            this._grid[row][col] = loser;
+            this.wonGame(false)
             this.print();
             return false;
         }
         if (this._grid[row][col] === hat) {
             console.log('=== VICTORY ===\nYou found your hat!')
             this._grid[row][col] = winner;
+            this.wonGame(true)
             this.print();
             return false;
         }
 
         this._grid[row][col] = path;
+        this._path.push( [ row, col ] );
         this.print();
         return true;
+    }
+
+    wonGame(won) {
+        let token = won ? winningPath : losingPath;
+
+        for (let step of this._path) {
+            this._grid[ step[0] ][ step[1] ] = token;
+        }
     }
 
     changeGrid() {

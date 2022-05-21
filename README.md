@@ -17,9 +17,11 @@
 Move through the grey paths to get to your "hat".
 
 ## Features
+1. Classic W-A-S-D movement keys
 
 ## Features To Add
-1. Movement keys. Change to more adjacent keys like "wasd".
+### May-June 2022
+1. ~Movement keys. Change to more adjacent keys like "wasd".~
 2. French theme. Concept: PLAYER is letter "e" looking for its accent (*aigu, grave, circonflexe, tréma*).
 3. Secret level. PLAYER is a "c" looking for its *cédille*.
 4. Function. Ensure that generated boards are winable.

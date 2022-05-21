@@ -40,7 +40,7 @@ const accentsAndLetters = {
 
 const getLetter = () => {
     let keys = Object.keys(accentsAndLetters);
-    let i = Math.floor( Math.random() * keys.length );
+    let i = getI(keys);
     
     return keys[i];
 }

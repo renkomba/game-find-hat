@@ -19,11 +19,12 @@ Move through the grey paths to get to your "hat".
 ## Features
 1. Classic W-A-S-D movement keys
 2. Coloured path, holes, and hat
+3. French-language theme. PLAYER is a vowel looking for its French accent.
 
 ## Features To Add
 ### May-June 2022
 1. ~Movement keys. Change to more adjacent keys like "wasd".~
-2. French theme. Concept: PLAYER is letter "e" looking for its accent (*aigu, grave, circonflexe, tréma*).
+2. French theme. Concept: PLAYER is letter "e" looking for its accent that fills in the word's blanks.
 3. Secret level. PLAYER is a "c" looking for its *cédille*.
 4. Function. Ensure that generated boards are winable.
 5. Lives. Add lives for when PLAYER accidentally falls off board.

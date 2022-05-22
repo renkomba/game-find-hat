@@ -40,7 +40,11 @@ const accentsAndLetters = {
 
 const getLetter = () => {
     let keys = Object.keys(accentsAndLetters);
-    let i = getI(keys);
+    let i = 0;
+
+    do {
+        getI(keys);
+    } while ( i === (keys.length - 1) )
     
     return keys[i];
 }

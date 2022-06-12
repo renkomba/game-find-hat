@@ -1,5 +1,20 @@
+// Only creates & modifies the playing field
+// Remove these elements from main.js once done
+
 class Field {
-    constructor() {}
+    constructor(arr2d) {
+        this._grid = arr2d;
+        this._position = [0,0];
+        this._rows = arr2d.length;
+        this._columns = arr2d[0].length;
+        this._path = [[0,0]];
+        this._directions = {
+            w: 'up',
+            d: 'right',
+            s: 'down',
+            a: 'left'
+        };
+    }
 
     static getRandomNum(exceptionArr, max) {
         let num = 0;

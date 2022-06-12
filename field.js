@@ -1,3 +1,6 @@
+// Only creates & modifies the playing field
+// Remove these elements from main.js once done
+
 class Field {
     constructor(arr2d) {
         this._grid = arr2d;

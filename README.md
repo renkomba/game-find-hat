@@ -12,7 +12,7 @@
 ## Description
 > Use the safe paths to get to your hat, -OR-
 > go rogue and fall to your death.
-> No presh.
+> No pressure. 
 
 Move through the grey paths to get to your "hat".
 
